@@ -1,10 +1,17 @@
 import './App.css';
+import React from 'react';
+import Header from './Header';
+import Main from './Main';
+import Nav from './Nav';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className="App">
-      <h1>Little Lemon</h1>
-      <h2>Coming Soon</h2>
+    <Header />
+    <Nav />
+    <Main />
+    <Footer />
     </div>
   );
 }
