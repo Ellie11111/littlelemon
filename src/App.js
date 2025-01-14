@@ -1,18 +1,25 @@
 import './App.css';
 import React from 'react';
-import Header from './Header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './Main';
 import Nav from './Nav';
 import Footer from './Footer';
+import Menu from './Menu';
 
 function App() {
   return (
-    <div className="App">
-    <Header />
-    <Nav />
-    <Main />
-    <Footer />
-    </div>
+   
+    <Router>
+      <div >
+        <Nav />
+        <Routes>
+          <Route path="/*" element={<Main />} />
+        </Routes>
+        <Menu/>
+        <Footer />
+      </div>
+    </Router>
+    
   );
 }
 

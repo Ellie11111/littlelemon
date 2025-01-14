@@ -1,20 +1,23 @@
 import React from 'react';
-import './Header.css'; // Assuming you have some CSS for styling
-import logo from './logo192.png'; // Assuming you have a logo image
+import{Link} from 'react-router-dom';
+import bannerImg from './images/restauranfood.jpg'; // Correct the path to the imageC:\Users\yilin\FrontEndDev\littlelemon\src\images\restauranfood.jpg
+
 const Header = () => {
     return (
         <header className="header">
-            <img src={logo} alt="Little Lemon Logo" />
-            <h1>Little Lemon</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#reserve">Reserve</a></li>
-                </ul>
-            </nav>
+            <section>
+           <div className="banner">
+            <h2>Little Lemon</h2>
+            <h3>Chicago</h3>
+            <p>we are a family owned Mediterranera restaurant, focused on traditional recipes servred with a modern twist.</p>
+            <Link to="/booking"><button aria-label='On Click'>Reserve Table</button></Link>
+            </div>
+            <div className='banner-img' >
+                <img src={bannerImg} alt="" />
+            </div>
+            </section>
         </header>
+        
     );
 };
 

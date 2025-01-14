@@ -1,11 +1,45 @@
-import React from "react";
-const Main=()=>{
-    return(
-        <main>
-            <h2>Home</h2>
-            <p>Welcome to Little Lemon</p>
-            <p>Little Lemon is a cozy cafe located in the heart of the city. We serve fresh, organic, and healthy foods. Our menu is inspired by the Mediterranean cuisine and we offer a variety of dishes that are sure to please everyone's taste buds. Whether you're looking for a quick bite to eat or a place to relax and enjoy a cup of coffee, Little Lemon is the perfect spot for you. We look forward to serving you!</p>
+import React from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Header from './Header';
+import BookingForm from './BookingForm';
+import ConfirmedBooking from './ConfirmedBooking';
+
+const fetchAPI = function(date) {
+    let result = [];
+    for (let i = 17; i <= 22; i++) {
+        result.push(`${i}:00`);
+        if (i !== 22) {
+            result.push(`${i}:30`);
+        }
+    }
+    console.log('Available times:', result);
+    return result;
+};
+
+const submitAPI = function(formData) {
+    console.log('Submitted form data:', formData);
+    return true;
+};
+
+const Main = () => {
+    const [availableTimes, setAvailableTimes] = React.useState(fetchAPI(new Date()));
+    const navigate = useNavigate();
+
+    function SubmitForm(formData) {
+        if (submitAPI(formData)) {
+            navigate("/confirmed");
+        }
+    }
+
+    return (
+        <main >
+            <Routes>
+                <Route path="/" element={<Header />} />
+                <Route path="/booking" element={<BookingForm availableTimes={availableTimes} SubmitForm={SubmitForm} />} />
+                <Route path="/confirmed" element={<ConfirmedBooking />} />
+            </Routes>
         </main>
     );
-}
+};
+
 export default Main;
